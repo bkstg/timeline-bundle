@@ -1,0 +1,8 @@
+{% extends '@BkstgCore/layout.html.twig' %}
+{% set page_title = 'Timeline' %}
+{% block content %}
+  {% for action in timeline %}
+    {{ timeline_render(action) }}
+  {% endfor %}
+  {{ knp_pagination_render(timeline.iterator) }}
+{% endblock %}

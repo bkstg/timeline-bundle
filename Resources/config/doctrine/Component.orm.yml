@@ -1,0 +1,10 @@
+Bkstg\NotificationBundle\Entity\Component:
+    type: entity
+    repositoryClass: Bkstg\NotificationBundle\Repository\ComponentRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO

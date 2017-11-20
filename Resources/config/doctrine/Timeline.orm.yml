@@ -1,0 +1,19 @@
+Bkstg\NotificationBundle\Entity\Timeline:
+    type: entity
+    repositoryClass: Bkstg\NotificationBundle\Repository\TimelineRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        action:
+            targetEntity: Bkstg\NotificationBundle\Entity\Action
+            inversedBy: timelines
+        subject:
+            targetEntity: Bkstg\NotificationBundle\Entity\Component
+            joinColumn:
+                onDelete: CASCADE

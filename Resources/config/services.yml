@@ -1,0 +1,34 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+    Bkstg\NotificationBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Repository,Tests}'
+
+    # Controller services.
+    Bkstg\NotificationBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags:
+            - { name: controller.service_arguments }
+
+    # Block services.
+    Bkstg\NotificationBundle\Block\:
+        resource: '../../Block'
+        public: true
+        arguments:
+            - null
+        tags:
+            - { name: sonata.block }
+
+    # Spread services.
+    Bkstg\NotificationBundle\Spread\:
+        resource: '../../Spread'
+        public: true
+        tags:
+            - { name: spy_timeline.spread }
+
+    # Notification service alias for autowiring.
+    Spy\Timeline\Notification\NotifierInterface: '@Bkstg\NotificationBundle\Notifier\UnreadNotificationManager'

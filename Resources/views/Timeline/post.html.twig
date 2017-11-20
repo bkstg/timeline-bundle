@@ -1,0 +1,16 @@
+<div class="container-fluid" style="width: 25em; max-width: 100%;">
+  <div class="row">
+    <div class="col-2">
+      {% include '@BkstgCore/partials/profile-picture.html.twig' with {'user': timeline.subject.data} only %}
+    </div>
+    <div class="col-8" style="white-space: normal">
+      <a href="{{ timeline.link|default('#') }}">
+        {{ timeline_component_render(timeline, 'subject') }} posted in {{ timeline_component_render(timeline, 'directComplement') }}
+      </a>
+    </div>
+    <div class="col-1"><i class="fa fa-newspaper-o"></i></div>
+    <div class="col-1">
+      <a href="{{ url('bkstg_notification_mark_read', {'id': timeline.id}) }}"><i class="fa fa-close"></i></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+bkstg_notification_mark_read:
+    path: /{id}/read
+    defaults:
+        _controller: Bkstg\NotificationBundle\Controller\NotificationController:markReadAction
+bkstg_notification_timeline:
+    path: /timeline
+    defaults:
+        _controller: Bkstg\NotificationBundle\Controller\NotificationController:timelineAction

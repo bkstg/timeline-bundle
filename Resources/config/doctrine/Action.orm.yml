@@ -1,0 +1,24 @@
+Bkstg\NotificationBundle\Entity\Action:
+    type: entity
+    repositoryClass: Bkstg\NotificationBundle\Repository\ActionRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        link:
+            type: text
+            nullable: true
+
+    oneToMany:
+        actionComponents:
+            targetEntity: Bkstg\NotificationBundle\Entity\ActionComponent
+            mappedBy: action
+            cascade:
+                - persist
+        timelines:
+            targetEntity: Bkstg\NotificationBundle\Entity\Timeline
+            mappedBy: action

@@ -1,0 +1,21 @@
+Bkstg\NotificationBundle\Entity\ActionComponent:
+    type: entity
+    repositoryClass: Bkstg\NotificationBundle\Repository\ActionComponentRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    manyToOne:
+        action:
+            targetEntity: Bkstg\NotificationBundle\Entity\Action
+            inversedBy: actionComponents
+            joinColumn:
+                onDelete: CASCADE
+        component:
+            targetEntity: Bkstg\NotificationBundle\Entity\Component
+            joinColumn:
+                onDelete: CASCADE
