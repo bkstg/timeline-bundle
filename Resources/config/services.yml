@@ -32,3 +32,8 @@ services:
 
     # Notification service alias for autowiring.
     Spy\Timeline\Notification\NotifierInterface: '@Bkstg\NotificationBundle\Notifier\UnreadNotificationManager'
+
+    # Event listener
+    Bkstg\NotificationBundle\EventListener\Notifications:
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.bkstg.notifications, method: onBlock }
