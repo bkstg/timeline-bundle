@@ -2,6 +2,7 @@
 
 namespace Bkstg\NotificationBundle\EventListener;
 
+use Bkstg\NotificationBundle\Block\NotificationsBlock;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
 
@@ -12,7 +13,7 @@ class Notifications
         $block = new Block();
         $block->setId(uniqid());
         $block->setSettings($event->getSettings());
-        $block->setType('Bkstg\\NotificationBundle\\Block\\NotificationsBlock');
+        $block->setType(NotificationsBlock::class);
 
         $event->addBlock($block);
     }
