@@ -32,6 +32,8 @@ services:
 
     # Notification service alias for autowiring.
     Spy\Timeline\Notification\NotifierInterface: '@Bkstg\NotificationBundle\Notifier\UnreadNotificationManager'
+    Spy\Timeline\Driver\ActionManagerInterface: '@spy_timeline.action_manager.orm'
+    Spy\Timeline\Driver\TimelineManagerInterface: '@spy_timeline.timeline_manager.orm'
 
     # Event listener
     Bkstg\NotificationBundle\EventListener\Notifications:
