@@ -33,6 +33,11 @@
         <div class="dropdown-item" href="#">{{ 'No new notifications'|trans }}</div>
       {% endfor %}
       <div class="dropdown-divider"></div>
+      <a href="{{ url('bkstg_notification_mark_all_read') }}" class="dropdown-item">
+        <i class="fa fa-bomb"></i>
+        {{ 'Clear all notifications'|trans }}
+      </a>
+      <div class="dropdown-divider"></div>
       <a href="{{ url('bkstg_notification_timeline') }}" class="dropdown-item">
         <i class="fa fa-history"></i>
         {{ 'Go to timeline'|trans }}

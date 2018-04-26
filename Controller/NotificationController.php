@@ -26,14 +26,34 @@ class NotificationController extends Controller
         return new RedirectResponse($request->server->get('HTTP_REFERER'));
     }
 
-    public function timelineAction(
+    public function markAllReadAction(
         TokenStorageInterface $token_storage,
-        TimelineManagerInterface $timeline_manager,
-        ActionManagerInterface $action_manager
+        ActionManagerInterface $action_manager,
+        NotifierInterface $notifier,
+        Request $request
     ) {
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
-        $timeline = $timeline_manager->getTimeline($subject);
+        $notifier->markAllAsRead($subject);
+        return new RedirectResponse($request->server->get('HTTP_REFERER'));
+    }
+
+    /**
+     * Renders the current user's notification stream.
+     */
+    public function timelineAction(
+        TokenStorageInterface $token_storage,
+        TimelineManagerInterface $timeline_manager,
+        ActionManagerInterface $action_manager,
+        Request $request
+    ) {
+        $user = $token_storage->getToken()->getUser();
+        $subject = $action_manager->findOrCreateComponent($user);
+        $timeline = $timeline_manager->getTimeline($subject, [
+            'page' => $request->query->get('page') ?: 1,
+            'max_per_page' => 25,
+            'paginate' => true,
+        ]);
 
         return new Response($this->templating->render(
             '@BkstgNotification/Timeline/timeline.html.twig',

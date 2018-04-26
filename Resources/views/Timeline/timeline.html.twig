@@ -1,8 +1,20 @@
+{% trans_default_domain 'BkstgNotificationBundle' %}
 {% extends '@BkstgCore/layout.html.twig' %}
 {% set page_title = 'Timeline' %}
+
 {% block content %}
-  {% for action in timeline %}
-    {{ timeline_render(action) }}
+  {% for entry in timeline %}
+    <p>
+      {% if entry.link is defined %}
+        <a href="{{ entry.link }}">
+      {% endif %}
+      {{ timeline_render(entry) }}
+      {% if entry.link is defined %}
+        </a>
+      {% endif %}
+    </p>
+  {% else %}
+    {{ 'No timeline entries'|trans }}
   {% endfor %}
   {{ knp_pagination_render(timeline.iterator) }}
 {% endblock %}

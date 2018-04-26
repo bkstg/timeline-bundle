@@ -2,6 +2,12 @@
 {% block subject_component %}
 {% spaceless %}
     {% set type = type|default('subject') %}
+
+    {# If current user is subject alter value #}
+    {% if app.user == action.subject.data %}
+        {% set value = 'You'|trans %}
+    {% endif %}
+
     {{ block('action_component') }}
 {% endspaceless %}
 {% endblock subject_component %}
