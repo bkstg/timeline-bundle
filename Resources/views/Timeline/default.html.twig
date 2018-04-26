@@ -1,0 +1,11 @@
+{{ timeline_component_render(timeline, 'subject') }}
+
+ - {{ timeline_component_render(timeline, 'verb') }}
+
+{% if timeline.getComponent('directComplement') %}
+ - {{ timeline_component_render(timeline, 'directComplement') }}
+{% endif %}
+
+{% if timeline.getComponent('indirectComplement') %}
+ - {{ timeline_component_render(timeline, 'indirectComplement') }}
+{% endif %}
