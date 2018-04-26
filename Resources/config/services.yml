@@ -38,4 +38,7 @@ services:
     # Event listener
     Bkstg\NotificationBundle\EventListener\Notifications:
         tags:
-            - { name: kernel.event_listener, event: sonata.block.event.bkstg.notifications, method: onBlock }
+            - { name: kernel.event_listener, event: sonata.block.event.bkstg.notification.notifications, method: onBlock }
+    Bkstg\NotificationBundle\EventListener\ProductionTimeline:
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.bkstg.notification.production_timeline, method: onBlock }
