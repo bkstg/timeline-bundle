@@ -1,0 +1,6 @@
+{% trans_default_domain 'BkstgNotificationBundle' %}
+{% for entry in timeline %}
+  <p>{{ timeline_render(entry) }}</p>
+{% else %}
+  <p>{{ 'No timeline entries'|trans }}</p>
+{% endfor %}
