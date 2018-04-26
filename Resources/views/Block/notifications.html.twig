@@ -14,7 +14,13 @@
             <div class="row">
               {# Render the timeline entry.  #}
               <div class="col-11">
+                {% if entry.link is defined %}
+                  <a href="{{ entry.link }}">
+                {% endif %}
                 {{ timeline_render(entry) }}
+                {% if entry.link is defined %}
+                  </a>
+                {% endif %}
               </div>
               {# Render the notification clear button. #}
               <div class="col-1">
