@@ -1,6 +1,20 @@
 {% trans_default_domain 'BkstgNotificationBundle' %}
-{% for entry in timeline %}
-  <p>{{ timeline_render(entry) }}</p>
-{% else %}
-  <p>{{ 'No timeline entries'|trans }}</p>
-{% endfor %}
+<h4 class="sr-only">{{ 'timeline.header'|trans }}</h4>
+<ul class="list-group">
+  {% for entry in timeline %}
+    <li class="list-group-item">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-3 col-md-1">
+            {% include '@BkstgCore/Partials/profile-picture.html.twig' with {'user': entry.subject.data} only %}
+          </div>
+          <div class="col-9 col-md-11">
+            {{ timeline_render(entry) }}
+          </div>
+        </div>
+      </div>
+    </li>
+  {% else %}
+    <li class="list-group-item">{{ 'No timeline entries'|trans }}</li>
+  {% endfor %}
+</ul>

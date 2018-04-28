@@ -1,11 +1,19 @@
-{{ timeline_component_render(timeline, 'subject') }}
+{% trans_default_domain 'BkstgNotificationBundle' %}
+{% block timeline_text %}
+  <strong>{{ timeline_component_render(timeline, 'subject') }}</strong>
 
- - {{ timeline_component_render(timeline, 'verb') }}
+   - {{ timeline_component_render(timeline, 'verb') }}
 
-{% if timeline.getComponent('directComplement') %}
- - {{ timeline_component_render(timeline, 'directComplement') }}
-{% endif %}
+  {% if timeline.getComponent('directComplement') %}
+   - {{ timeline_component_render(timeline, 'directComplement') }}
+  {% endif %}
 
-{% if timeline.getComponent('indirectComplement') %}
- - {{ timeline_component_render(timeline, 'indirectComplement') }}
-{% endif %}
+  {% if timeline.getComponent('indirectComplement') %}
+   - {{ timeline_component_render(timeline, 'indirectComplement') }}
+  {% endif %}
+{% endblock %}
+{% block timeline_link %}
+  {% if timeline.link is defined %}
+    <a href="{{ timeline.link }}">{{ 'timeline.entry.read_more'|trans }}</a>
+  {% endif %}
+{% endblock %}
