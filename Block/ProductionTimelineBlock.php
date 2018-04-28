@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Block;
+namespace Bkstg\TimelineBundle\Block;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
@@ -51,7 +51,7 @@ class ProductionTimelineBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => '@BkstgNotification/Block/production_timeline.html.twig',
+            'template' => '@BkstgTimeline/Block/production_timeline.html.twig',
         ]);
     }
 }

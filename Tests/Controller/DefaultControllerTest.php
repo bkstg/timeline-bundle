@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Tests\Controller;
+namespace Bkstg\TimelineBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

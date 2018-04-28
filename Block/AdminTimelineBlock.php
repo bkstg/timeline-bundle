@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Block;
+namespace Bkstg\TimelineBundle\Block;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
@@ -55,7 +55,7 @@ class AdminTimelineBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => '@BkstgNotification/Block/admin_timeline.html.twig',
+            'template' => '@BkstgTimeline/Block/admin_timeline.html.twig',
         ]);
     }
 }

@@ -1,6 +1,6 @@
-Bkstg\NotificationBundle\Entity\Action:
+Bkstg\TimelineBundle\Entity\Action:
     type: entity
-    repositoryClass: Bkstg\NotificationBundle\Repository\ActionRepository
+    repositoryClass: Bkstg\TimelineBundle\Repository\ActionRepository
 
     id:
         id:
@@ -15,10 +15,10 @@ Bkstg\NotificationBundle\Entity\Action:
 
     oneToMany:
         actionComponents:
-            targetEntity: Bkstg\NotificationBundle\Entity\ActionComponent
+            targetEntity: Bkstg\TimelineBundle\Entity\ActionComponent
             mappedBy: action
             cascade:
                 - persist
         timelines:
-            targetEntity: Bkstg\NotificationBundle\Entity\Timeline
+            targetEntity: Bkstg\TimelineBundle\Entity\Timeline
             mappedBy: action

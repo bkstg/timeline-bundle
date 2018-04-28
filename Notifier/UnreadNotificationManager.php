@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Notifier;
+namespace Bkstg\TimelineBundle\Notifier;
 
 use Bkstg\CoreBundle\User\UserInterface;
 use Spy\Timeline\Model\ActionInterface;

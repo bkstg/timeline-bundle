@@ -1,6 +1,6 @@
 {
-    "name": "bkstg/notification-bundle",
-    "description": "Provides the backstage notifications.",
+    "name": "bkstg/timeline-bundle",
+    "description": "Provides the backstage timelines.",
     "type": "symfony-bundle",
     "require": {
         "symfony/framework-bundle": "^2.8",
@@ -20,6 +20,6 @@
         }
     },
     "autoload": {
-        "psr-4": { "Bkstg\\NotificationBundle\\": "" }
+        "psr-4": { "Bkstg\\TimelineBundle\\": "" }
     }
 }

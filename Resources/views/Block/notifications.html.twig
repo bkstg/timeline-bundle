@@ -1,4 +1,4 @@
-{% trans_default_domain 'BkstgNotificationBundle' %}
+{% trans_default_domain 'BkstgTimelineBundle' %}
 
 <ul class="navbar-nav">
   <li class="nav-item dropdown">
@@ -18,7 +18,7 @@
               </div>
               {# Render the notification clear button. #}
               <div class="col-1">
-                <a href="{{ url('bkstg_notification_mark_read', {'id': entry.id}) }}"><i class="fa fa-close"></i></a>
+                <a href="{{ url('bkstg_timeline_mark_read', {'id': entry.id}) }}"><i class="fa fa-close"></i></a>
               </div>
             </div>
           </div>
@@ -27,12 +27,12 @@
         <div class="dropdown-item" href="#">{{ 'No new notifications'|trans }}</div>
       {% endfor %}
       <div class="dropdown-divider"></div>
-      <a href="{{ url('bkstg_notification_mark_all_read') }}" class="dropdown-item">
+      <a href="{{ url('bkstg_timeline_mark_all_read') }}" class="dropdown-item">
         <i class="fa fa-bomb"></i>
         {{ 'Clear all notifications'|trans }}
       </a>
       <div class="dropdown-divider"></div>
-      <a href="{{ url('bkstg_notification_timeline') }}" class="dropdown-item">
+      <a href="{{ url('bkstg_timeline_timeline') }}" class="dropdown-item">
         <i class="fa fa-history"></i>
         {{ 'Go to timeline'|trans }}
       </a>

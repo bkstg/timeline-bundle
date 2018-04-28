@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Spread;
+namespace Bkstg\TimelineBundle\Spread;
 
 use Spy\Timeline\Model\ActionInterface;
 use Spy\Timeline\Spread\Entry\EntryCollection;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Controller;
+namespace Bkstg\TimelineBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
 use Spy\Timeline\Driver\ActionManagerInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class NotificationController extends Controller
+class TimelineController extends Controller
 {
     public function markReadAction(
         $id,
@@ -39,7 +39,7 @@ class NotificationController extends Controller
     }
 
     /**
-     * Renders the current user's notification stream.
+     * Renders the current user's timeline stream.
      */
     public function timelineAction(
         TokenStorageInterface $token_storage,
@@ -56,7 +56,7 @@ class NotificationController extends Controller
         ]);
 
         return new Response($this->templating->render(
-            '@BkstgNotification/Timeline/timeline.html.twig',
+            '@BkstgTimeline/Timeline/timeline.html.twig',
             ['timeline' => $timeline]
         ));
     }

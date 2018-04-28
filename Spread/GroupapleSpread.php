@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Spread;
+namespace Bkstg\TimelineBundle\Spread;
 
 use Bkstg\CoreBundle\User\MembershipProviderInterface;
 use MidnightLuke\GroupSecurityBundle\Model\GroupableInterface;

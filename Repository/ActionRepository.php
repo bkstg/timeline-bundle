@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Repository;
+namespace Bkstg\TimelineBundle\Repository;
 
 /**
  * ActionRepository

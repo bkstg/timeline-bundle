@@ -1,6 +1,6 @@
-Bkstg\NotificationBundle\Entity\Timeline:
+Bkstg\TimelineBundle\Entity\Timeline:
     type: entity
-    repositoryClass: Bkstg\NotificationBundle\Repository\TimelineRepository
+    repositoryClass: Bkstg\TimelineBundle\Repository\TimelineRepository
 
     id:
         id:
@@ -11,9 +11,9 @@ Bkstg\NotificationBundle\Entity\Timeline:
 
     manyToOne:
         action:
-            targetEntity: Bkstg\NotificationBundle\Entity\Action
+            targetEntity: Bkstg\TimelineBundle\Entity\Action
             inversedBy: timelines
         subject:
-            targetEntity: Bkstg\NotificationBundle\Entity\Component
+            targetEntity: Bkstg\TimelineBundle\Entity\Component
             joinColumn:
                 onDelete: CASCADE

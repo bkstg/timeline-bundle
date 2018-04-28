@@ -1,6 +1,6 @@
-Bkstg\NotificationBundle\Entity\Component:
+Bkstg\TimelineBundle\Entity\Component:
     type: entity
-    repositoryClass: Bkstg\NotificationBundle\Repository\ComponentRepository
+    repositoryClass: Bkstg\TimelineBundle\Repository\ComponentRepository
 
     id:
         id:

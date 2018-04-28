@@ -1,6 +1,6 @@
 <?php
 
-namespace Bkstg\NotificationBundle\Entity;
+namespace Bkstg\TimelineBundle\Entity;
 
 use Spy\TimelineBundle\Entity\Timeline as BaseTimeline;
 

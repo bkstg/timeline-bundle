@@ -1,8 +1,8 @@
 <?php
 
-namespace Bkstg\NotificationBundle\EventListener;
+namespace Bkstg\TimelineBundle\EventListener;
 
-use Bkstg\NotificationBundle\Block\AdminTimelineBlock;
+use Bkstg\TimelineBundle\Block\AdminTimelineBlock;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
 
