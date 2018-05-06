@@ -51,6 +51,7 @@ class ProductionTimelineBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'production' => null,
             'template' => '@BkstgTimeline/Block/production_timeline.html.twig',
         ]);
     }
