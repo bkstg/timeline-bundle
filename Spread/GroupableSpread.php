@@ -9,7 +9,7 @@ use Spy\Timeline\Spread\Entry\EntryCollection;
 use Spy\Timeline\Spread\Entry\EntryUnaware;
 use Spy\Timeline\Spread\SpreadInterface;
 
-class GroupapleSpread implements SpreadInterface
+abstract class GroupableSpread implements SpreadInterface
 {
     private $membership_provider;
 

@@ -23,13 +23,6 @@ services:
         tags:
             - { name: sonata.block }
 
-    # Spread services.
-    Bkstg\TimelineBundle\Spread\:
-        resource: '../../Spread'
-        public: true
-        tags:
-            - { name: spy_timeline.spread }
-
     # Notification service alias for autowiring.
     Spy\Timeline\Notification\NotifierInterface: '@Bkstg\TimelineBundle\Notifier\UnreadNotificationManager'
     Spy\Timeline\Driver\ActionManagerInterface: '@spy_timeline.action_manager.orm'

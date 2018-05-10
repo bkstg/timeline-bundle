@@ -7,7 +7,7 @@ use Spy\Timeline\Spread\Entry\EntryCollection;
 use Spy\Timeline\Spread\Entry\EntryUnaware;
 use Spy\Timeline\Spread\SpreadInterface;
 
-class AdminSpread implements SpreadInterface
+abstract class AdminSpread implements SpreadInterface
 {
     /**
      * {@inheritdoc}
