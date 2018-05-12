@@ -3,35 +3,41 @@
 namespace Bkstg\TimelineBundle\Notifier;
 
 use Bkstg\CoreBundle\User\UserInterface;
+use Bkstg\TimelineBundle\Event\NotificationEntryEvent;
+use Spy\Timeline\Driver\TimelineManagerInterface;
 use Spy\Timeline\Model\ActionInterface;
 use Spy\Timeline\Notification\NotifierInterface;
 use Spy\Timeline\Notification\Unread\UnreadNotificationManager as BaseUnreadNotificationManager;
 use Spy\Timeline\Spread\Entry\EntryCollection;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class UnreadNotificationManager extends BaseUnreadNotificationManager
 {
+    protected $dispatcher;
+    protected $timeline_manager;
+
+    public function __construct(
+        EventDispatcherInterface $dispatcher,
+        TimelineManagerInterface $timeline_manager
+    ) {
+        $this->dispatcher = $dispatcher;
+        parent::__construct($timeline_manager);
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function notify(ActionInterface $action, EntryCollection $entryCollection)
+    public function notify(ActionInterface $action, EntryCollection $entry_collection)
     {
-        // Get the original subject of this action.
-        $orig_subject = $action->getComponent('subject')->getData();
-
         // Iterate over entry collections for each context.
-        foreach ($entryCollection as $context => $entries) {
+        foreach ($entry_collection as $context => $entries) {
             // Iterate over entries in each collection.
             foreach ($entries as $entry) {
-                // Get the subject data for the entry..
-                $subject_model = $entry->getSubjectModel();
-                $subject_id = $entry->getSubjectId();
+                // Allow listeners to determine whether or not to notify.
+                $entry_event = new NotificationEntryEvent($entry, $action);
+                $this->dispatcher->dispatch(NotificationEntryEvent::NAME, $entry_event);
 
-                // Only notify UserInterface subjects that are not the original
-                // subject of the action.
-                if (class_exists($subject_model)
-                    && in_array(UserInterface::class, class_implements($subject_model))
-                    && ($subject_model != get_class($orig_subject) || $subject_id != $orig_subject->getId())
-                ) {
+                if ($entry_event->getNotify()) {
                     // Create a new timeline action for this notification.
                     $this->timelineManager->createAndPersist(
                         $action,

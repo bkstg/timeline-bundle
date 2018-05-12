@@ -11,26 +11,12 @@ use Spy\Timeline\Spread\SpreadInterface;
 
 abstract class GroupableSpread implements SpreadInterface
 {
-    private $membership_provider;
+    protected $membership_provider;
 
     public function __construct(
         MembershipProviderInterface $membership_provider
     ) {
         $this->membership_provider = $membership_provider;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function supports(ActionInterface $action)
-    {
-        $object = $action->getComponent('directComplement')->getData();
-
-        if (!$object instanceof GroupableInterface) {
-            return false;
-        }
-
-        return true;
     }
 
     /**
