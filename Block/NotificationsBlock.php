@@ -10,7 +10,7 @@ use Spy\Timeline\Notification\NotifierInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class NotificationsBlock extends AbstractBlockService
 {
@@ -21,7 +21,7 @@ class NotificationsBlock extends AbstractBlockService
 
     public function __construct(
         $name,
-        EngineInterface $templating,
+        Environment $templating,
         ActionManagerInterface $action_manager,
         TimelineManagerInterface $timeline_manager,
         TokenStorageInterface $token_storage,
