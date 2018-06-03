@@ -3,7 +3,7 @@
     "description": "Provides the backstage timelines.",
     "type": "symfony-bundle",
     "require": {
-        "symfony/framework-bundle": "^2.8",
+        "symfony/framework-bundle": "^3.3||^4.0",
         "bkstg/core-bundle": "2.0.x-dev",
         "stephpy/timeline-bundle": "^2.4"
     },
