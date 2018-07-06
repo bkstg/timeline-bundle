@@ -5,7 +5,7 @@
     "require": {
         "symfony/framework-bundle": "^3.3||^4.0",
         "bkstg/core-bundle": "2.0.x-dev",
-        "stephpy/timeline-bundle": "^2.4"
+        "stephpy/timeline-bundle": "^3.0"
     },
     "license": "MIT",
     "authors": [
