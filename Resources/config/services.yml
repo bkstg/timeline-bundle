@@ -20,6 +20,7 @@ services:
         public: true
         arguments:
             - null
+            - '@sonata.templating'
         tags:
             - { name: sonata.block }
 

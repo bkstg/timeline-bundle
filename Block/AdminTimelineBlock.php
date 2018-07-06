@@ -4,12 +4,12 @@ namespace Bkstg\TimelineBundle\Block;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Templating\TwigEngine;
 use Spy\Timeline\Driver\ActionManagerInterface;
 use Spy\Timeline\Driver\TimelineManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Twig\Environment;
 
 class AdminTimelineBlock extends AbstractBlockService
 {
@@ -19,7 +19,7 @@ class AdminTimelineBlock extends AbstractBlockService
 
     public function __construct(
         $name,
-        Environment $templating,
+        TwigEngine $templating,
         ActionManagerInterface $action_manager,
         TimelineManagerInterface $timeline_manager,
         TokenStorageInterface $token_storage
