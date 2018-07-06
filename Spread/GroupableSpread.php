@@ -31,12 +31,9 @@ abstract class GroupableSpread implements SpreadInterface
             $collection->add(new EntryUnaware(get_class($group), $group->getId()));
 
             // Iterate over members and spread to all active members.
-            foreach ($this->membership_provider->loadMembershipsByGroup($group) as $membership) {
-                if ($membership->isActive()
-                && !$membership->isExpired()) {
-                    $user = $membership->getMember();
-                    $collection->add(new EntryUnaware(get_class($user), $user->getId()));
-                }
+            foreach ($this->membership_provider->loadActiveMembershipsByProduction($group) as $membership) {
+                $user = $membership->getMember();
+                $collection->add(new EntryUnaware(get_class($user), $user->getId()));
             }
         }
     }
