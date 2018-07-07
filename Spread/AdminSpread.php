@@ -21,14 +21,6 @@ abstract class AdminSpread implements SpreadInterface
     /**
      * {@inheritdoc}
      */
-    public function supports(ActionInterface $action)
-    {
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function process(ActionInterface $action, EntryCollection $collection): void
     {
         $collection->add(new EntryUnaware('bkstg-admin', 'admin'));

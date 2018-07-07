@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-3 col-md-1">
-            {% include '@BkstgCore/Partials/profile-picture.html.twig' with {'user': entry.subject.data} only %}
+            {% include '@BkstgCore/_profile_picture.html.twig' with {'user': entry.subject.data} only %}
           </div>
           <div class="col-9 col-md-11">
             {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
