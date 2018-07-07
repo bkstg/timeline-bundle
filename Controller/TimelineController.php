@@ -1,5 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the BkstgCoreBundle package.
+ * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Bkstg\TimelineBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
@@ -23,6 +32,7 @@ class TimelineController extends Controller
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAsReadAction($subject, $id);
+
         return new RedirectResponse($request->server->get('HTTP_REFERER'));
     }
 
@@ -35,6 +45,7 @@ class TimelineController extends Controller
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAllAsRead($subject);
+
         return new RedirectResponse($request->server->get('HTTP_REFERER'));
     }
 

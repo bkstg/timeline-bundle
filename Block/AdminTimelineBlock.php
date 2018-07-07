@@ -1,5 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the BkstgCoreBundle package.
+ * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Bkstg\TimelineBundle\Block;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
@@ -30,7 +39,6 @@ class AdminTimelineBlock extends AbstractBlockService
         parent::__construct($name, $templating);
     }
 
-
     public function execute(BlockContextInterface $context, Response $response = null)
     {
         $admin_component = $this->action_manager->findOrCreateComponent('bkstg-admin', 'admin');
@@ -47,7 +55,7 @@ class AdminTimelineBlock extends AbstractBlockService
         ], $response);
     }
 
-    public function configureSettings(OptionsResolver $resolver)
+    public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'template' => '@BkstgTimeline/Block/admin_timeline.html.twig',

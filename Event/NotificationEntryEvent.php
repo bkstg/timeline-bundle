@@ -1,5 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the BkstgCoreBundle package.
+ * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Bkstg\TimelineBundle\Event;
 
 use Spy\Timeline\Model\ActionInterface;
@@ -35,7 +44,7 @@ class NotificationEntryEvent extends Event
         return $this->notify;
     }
 
-    public function setNotify(bool $notify)
+    public function setNotify(bool $notify): void
     {
         $this->notify = $notify;
     }

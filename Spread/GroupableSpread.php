@@ -1,9 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the BkstgCoreBundle package.
+ * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Bkstg\TimelineBundle\Spread;
 
 use Bkstg\CoreBundle\User\MembershipProviderInterface;
-use MidnightLuke\GroupSecurityBundle\Model\GroupableInterface;
 use Spy\Timeline\Model\ActionInterface;
 use Spy\Timeline\Spread\Entry\EntryCollection;
 use Spy\Timeline\Spread\Entry\EntryUnaware;
@@ -22,7 +30,7 @@ abstract class GroupableSpread implements SpreadInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ActionInterface $action, EntryCollection $collection)
+    public function process(ActionInterface $action, EntryCollection $collection): void
     {
         // Get the groupable object and iterate over groups.
         $groupable = $action->getComponent('directComplement')->getData();

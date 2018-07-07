@@ -1,12 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the BkstgCoreBundle package.
+ * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Bkstg\TimelineBundle\Notifier;
 
-use Bkstg\CoreBundle\User\UserInterface;
 use Bkstg\TimelineBundle\Event\NotificationEntryEvent;
 use Spy\Timeline\Driver\TimelineManagerInterface;
 use Spy\Timeline\Model\ActionInterface;
-use Spy\Timeline\Notification\NotifierInterface;
 use Spy\Timeline\Notification\Unread\UnreadNotificationManager as BaseUnreadNotificationManager;
 use Spy\Timeline\Spread\Entry\EntryCollection;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -27,7 +34,7 @@ class UnreadNotificationManager extends BaseUnreadNotificationManager
     /**
      * {@inheritdoc}
      */
-    public function notify(ActionInterface $action, EntryCollection $entry_collection)
+    public function notify(ActionInterface $action, EntryCollection $entry_collection): void
     {
         // Iterate over entry collections for each context.
         foreach ($entry_collection as $context => $entries) {
