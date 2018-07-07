@@ -8,7 +8,7 @@
       {% if entry.link is defined %}
         <a href="{{ entry.link }}">
       {% endif %}
-      {{ timeline_render(entry) }}
+      {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
       {% if entry.link is defined %}
         </a>
       {% endif %}

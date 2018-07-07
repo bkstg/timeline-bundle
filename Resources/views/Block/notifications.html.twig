@@ -14,7 +14,7 @@
             <div class="row">
               {# Render the timeline entry.  #}
               <div class="col-11">
-                {{ timeline_render(entry) }}
+                {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
               </div>
               {# Render the notification clear button. #}
               <div class="col-1">
