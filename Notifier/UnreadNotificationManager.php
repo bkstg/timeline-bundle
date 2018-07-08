@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Bkstg\TimelineBundle\Notifier;
 
+use Bkstg\CoreBundle\User\UserInterface;
 use Bkstg\TimelineBundle\Event\NotificationEntryEvent;
 use Spy\Timeline\Driver\TimelineManagerInterface;
 use Spy\Timeline\Model\ActionInterface;
@@ -36,14 +37,37 @@ class UnreadNotificationManager extends BaseUnreadNotificationManager
      */
     public function notify(ActionInterface $action, EntryCollection $entry_collection): void
     {
+        // Get the action subject for decisions later.
+        $action_subject = $action->getComponent('subject');
+
         // Iterate over entry collections for each context.
         foreach ($entry_collection as $context => $entries) {
             // Iterate over entries in each collection.
             foreach ($entries as $entry) {
-                // Allow listeners to determine whether or not to notify.
-                $entry_event = new NotificationEntryEvent($entry, $action);
-                $this->dispatcher->dispatch(NotificationEntryEvent::NAME, $entry_event);
+                // Get the entry subject.
+                $entry_subject = $entry->getSubject();
 
+                // Use a reflection class to determine if this is a user.
+                try {
+                    $reflection = new \ReflectionClass($entry_subject->getModel());
+                    if (!$reflection->implementsInterface(UserInterface::class)) {
+                        continue;
+                    }
+                } catch (\Exception $e) {
+                    // This isn't even an object, no need to continue.
+                    continue;
+                }
+
+                // Create an entry event.
+                $entry_event = new NotificationEntryEvent($entry, $action);
+
+                // Default to false if the action and entry subject match.
+                if ($action_subject === $entry_subject) {
+                    $entry_event->setNotify(false);
+                }
+
+                // Allow listeners to alter decision.
+                $this->dispatcher->dispatch(NotificationEntryEvent::NAME, $entry_event);
                 if ($entry_event->getNotify()) {
                     // Create a new timeline action for this notification.
                     $this->timelineManager->createAndPersist(
