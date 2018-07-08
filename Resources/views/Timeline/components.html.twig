@@ -1,3 +1,5 @@
+{% trans_default_domain 'BkstgTimelineBundle' %}
+
 {# Widgets #}
 {% block subject_component %}
 {% spaceless %}
@@ -5,7 +7,7 @@
 
     {# If current user is subject alter value #}
     {% if app.user == action.subject.data %}
-        {% set value = 'You'|trans %}
+        {% set value = 'timeline.you'|trans|capitalize %}
     {% endif %}
 
     {{ block('action_component') }}
@@ -22,6 +24,10 @@
 
 {% block directComplement_component %}
 {% spaceless %}
+    {# If current user is subject alter value #}
+    {% if app.user == action.getComponent('directComplement').data %}
+        {% set value = 'timeline.you'|trans %}
+    {% endif %}
     {% set type = type|default('directComplement') %}
     {{ block('action_component') }}
 {% endspaceless %}
