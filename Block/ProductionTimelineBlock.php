@@ -53,7 +53,7 @@ class ProductionTimelineBlock extends AbstractBlockService
             [
                 'page' => $request->query->getInt('page', 1),
                 'paginate' => true,
-                'max_per_page' => 25,
+                'max_per_page' => 10,
             ]
         );
 

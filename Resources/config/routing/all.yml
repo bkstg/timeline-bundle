@@ -11,6 +11,6 @@ bkstg_timeline_mark_all_read:
     defaults:
         _controller: Bkstg\TimelineBundle\Controller\TimelineController:markAllReadAction
 bkstg_timeline_timeline:
-    path: /timeline
+    path: /
     defaults:
         _controller: Bkstg\TimelineBundle\Controller\TimelineController:timelineAction

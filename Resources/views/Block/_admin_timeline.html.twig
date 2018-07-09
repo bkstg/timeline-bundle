@@ -8,8 +8,9 @@
         <div class="col-3 col-md-1">
           {% include '@BkstgCore/_profile_picture.html.twig' with {'user': entry.subject.data} only %}
         </div>
-        <div class="col-9 col-md-11 text-dark">
-          {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
+        <div class="col-9 col-md-11">
+          {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}<br />
+          <span class="text-muted">{{ entry.createdAt|date(full_date) }}</span>
         </div>
       </div>
     </a>

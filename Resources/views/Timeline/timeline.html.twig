@@ -1,20 +1,30 @@
-{% trans_default_domain 'BkstgTimelineBundle' %}
 {% extends '@BkstgCore/layout.html.twig' %}
-{% set page_title = 'Timeline' %}
+{% trans_default_domain 'BkstgTimelineBundle' %}
+{% set page_title = 'timeline.your_header'|trans|title %}
 
-{% block content %}
-  {% for entry in timeline %}
-    <p>
-      {% if entry.link is defined %}
-        <a href="{{ entry.link }}">
-      {% endif %}
-      {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
-      {% if entry.link is defined %}
+{% block main %}
+  <div class="container-fluid">
+    {% include '@BkstgCore/_header.html.twig' with { 'title': page_title } only %}
+    {% include '@BkstgCore/_alerts.html.twig' %}
+
+    <div class="list-group">
+      {% for entry in timeline %}
+        <a href="{{ entry.link }}" class="list-group-item list-group-item-action container-fluid">
+          <div class="row h-100 align-items-center">
+            <div class="col-3 col-md-1">
+              {% include '@BkstgCore/_profile_picture.html.twig' with {'user': entry.subject.data} only %}
+            </div>
+            <div class="col-9 col-md-11">
+              {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}<br />
+              <span class="text-muted">{{ entry.createdAt|date(full_date) }}</span>
+            </div>
+          </div>
         </a>
-      {% endif %}
-    </p>
-  {% else %}
-    {{ 'No timeline entries'|trans }}
-  {% endfor %}
-  {{ knp_pagination_render(timeline.iterator) }}
+      {% else %}
+        <div class="list-group-item">{{ 'timeline.no_entries'|trans }}</div>
+      {% endfor %}
+    </div>
+    {{ knp_pagination_render(timeline.iterator) }}
+    {% include '@BkstgCore/_footer.html.twig' %}
+  </div>
 {% endblock %}

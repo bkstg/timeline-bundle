@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Bkstg\TimelineBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
+use Bkstg\TimelineBundle\BkstgTimelineBundle;
 use Bkstg\TimelineBundle\Entity\Action;
 use Spy\Timeline\Driver\ActionManagerInterface;
 use Spy\Timeline\Driver\TimelineManagerInterface;
@@ -67,6 +68,11 @@ class TimelineController extends Controller
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAllAsRead($subject);
+
+        $this->session->getFlashBag()->add(
+            'success',
+            $this->translator->trans('notifications.cleared', [], BkstgTimelineBundle::TRANSLATION_DOMAIN)
+        );
 
         return new RedirectResponse($request->server->get('HTTP_REFERER'));
     }
