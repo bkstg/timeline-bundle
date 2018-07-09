@@ -3,3 +3,5 @@ timeline:
     entry:
         read_more: 'Read more'
     you: 'you'
+    notifications: 'Notifications'
+    goto: 'Go to timeline'

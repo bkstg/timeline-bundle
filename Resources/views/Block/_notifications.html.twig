@@ -4,23 +4,21 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fa fa-bell"></i>
-      {{ 'Notifications'|trans }}
+      {{ 'timeline.notifications'|trans }}
       <span class="badge {% if count > 0 %}badge-primary{% else %}badge-secondary{% endif %}">{{ count }}</span>
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notifications-dropdown">
       {% for entry in timeline %}
-        <div class="dropdown-item">
-          <div class="container-fluid" style="width: 25em; max-width: 100%; white-space: normal;">
-            <div class="row">
-              {# Render the timeline entry.  #}
-              <div class="col-11">
-                {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
-              </div>
-              {# Render the notification clear button. #}
-              <div class="col-1">
-                <a href="{{ url('bkstg_timeline_mark_read', {'id': entry.id}) }}"><i class="fa fa-close"></i></a>
-              </div>
-            </div>
+        <div class="dropdown-item container-fluid h-100" style="width: 25em; max-width: 100%; white-space: normal;">
+          <div class="row h-100 align-items-center">
+            {# Render the timeline entry.  #}
+            <a href="{{ url('bkstg_timeline_redirect', {'id': entry.id}) }}" class="text-dark col-11">
+              {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
+            </a>
+            {# Render the notification clear button. #}
+            <a href="{{ url('bkstg_timeline_mark_read', {'id': entry.id}) }}" class="text-danger col-1">
+              <i class="fa fa-close"></i>
+            </a>
           </div>
         </div>
       {% else %}
@@ -34,7 +32,7 @@
       <div class="dropdown-divider"></div>
       <a href="{{ url('bkstg_timeline_timeline') }}" class="dropdown-item">
         <i class="fa fa-history"></i>
-        {{ 'Go to timeline'|trans }}
+        {{ 'timeline.goto'|trans }}
       </a>
     </div>
   </li>

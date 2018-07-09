@@ -2,6 +2,10 @@ bkstg_timeline_mark_read:
     path: /{id}/read
     defaults:
         _controller: Bkstg\TimelineBundle\Controller\TimelineController:markReadAction
+bkstg_timeline_redirect:
+    path: /{id}/redirect
+    defaults:
+        _controller: Bkstg\TimelineBundle\Controller\TimelineController:redirectAction
 bkstg_timeline_mark_all_read:
     path: /read-all
     defaults:

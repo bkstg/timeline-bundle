@@ -64,7 +64,7 @@ class NotificationsBlock extends AbstractBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'template' => '@BkstgTimeline/Block/notifications.html.twig',
+            'template' => '@BkstgTimeline/Block/_notifications.html.twig',
         ]);
     }
 }

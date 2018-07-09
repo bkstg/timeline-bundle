@@ -12,23 +12,45 @@ declare(strict_types=1);
 namespace Bkstg\TimelineBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
+use Bkstg\TimelineBundle\Entity\Action;
 use Spy\Timeline\Driver\ActionManagerInterface;
 use Spy\Timeline\Driver\TimelineManagerInterface;
 use Spy\Timeline\Notification\NotifierInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class TimelineController extends Controller
 {
-    public function markReadAction(
-        $id,
+    public function redirectAction(
+        int $id,
         TokenStorageInterface $token_storage,
         ActionManagerInterface $action_manager,
         NotifierInterface $notifier,
         Request $request
-    ) {
+    ): Response {
+        // Get the action.
+        $repo = $this->em->getRepository(Action::class);
+        if (null === $action = $repo->findOneBy(['id' => $id])) {
+            throw new NotFoundHttpException();
+        }
+
+        $user = $token_storage->getToken()->getUser();
+        $subject = $action_manager->findOrCreateComponent($user);
+        $notifier->markAsReadAction($subject, $id);
+
+        return new RedirectResponse($action->getLink());
+    }
+
+    public function markReadAction(
+        int $id,
+        TokenStorageInterface $token_storage,
+        ActionManagerInterface $action_manager,
+        NotifierInterface $notifier,
+        Request $request
+    ): Response {
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAsReadAction($subject, $id);
@@ -41,7 +63,7 @@ class TimelineController extends Controller
         ActionManagerInterface $action_manager,
         NotifierInterface $notifier,
         Request $request
-    ) {
+    ): Response {
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $notifier->markAllAsRead($subject);
@@ -57,7 +79,7 @@ class TimelineController extends Controller
         TimelineManagerInterface $timeline_manager,
         ActionManagerInterface $action_manager,
         Request $request
-    ) {
+    ): Response {
         $user = $token_storage->getToken()->getUser();
         $subject = $action_manager->findOrCreateComponent($user);
         $timeline = $timeline_manager->getTimeline($subject, [

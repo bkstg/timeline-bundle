@@ -12,8 +12,3 @@
    - {{ timeline_component_render(timeline, 'indirectComplement') }}
   {% endif %}
 {% endblock %}
-{% block timeline_link %}
-  {% if timeline.link is defined %}
-    <a href="{{ timeline.link }}">{{ 'timeline.entry.read_more'|trans }}</a>
-  {% endif %}
-{% endblock %}
