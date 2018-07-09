@@ -1,0 +1,20 @@
+{% trans_default_domain 'BkstgTimelineBundle' %}
+
+<h4 class="sr-only">{{ 'timeline.header'|trans }}</h4>
+<div class="list-group">
+  {% for entry in timeline %}
+    <a href="{{ entry.link }}" class="list-group-item list-group-item-action container-fluid">
+      <div class="row h-100 align-items-center">
+        <div class="col-3 col-md-1">
+          {% include '@BkstgCore/_profile_picture.html.twig' with {'user': entry.subject.data} only %}
+        </div>
+        <div class="col-9 col-md-11 text-dark">
+          {{ timeline_render(entry, 'Timeline/'~entry.verb~'.html.twig') }}
+        </div>
+      </div>
+    </a>
+  {% else %}
+    <div class="list-group-item">{{ 'timeline.no_entries'|trans }}</div>
+  {% endfor %}
+</div>
+{{ knp_pagination_render(timeline.iterator) }}
