@@ -22,12 +22,12 @@
           </div>
         </div>
       {% else %}
-        <div class="dropdown-item" href="#">{{ 'No new notifications'|trans }}</div>
+        <div class="dropdown-item" href="#">{{ 'notifications.empty'|trans }}</div>
       {% endfor %}
       <div class="dropdown-divider"></div>
       <a href="{{ url('bkstg_timeline_mark_all_read') }}" class="dropdown-item">
         <i class="fa fa-bomb"></i>
-        {{ 'Clear all notifications'|trans }}
+        {{ 'notifications.clear_all'|trans }}
       </a>
       <div class="dropdown-divider"></div>
       <a href="{{ url('bkstg_timeline_timeline') }}" class="dropdown-item">

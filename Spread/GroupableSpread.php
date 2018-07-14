@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the BkstgCoreBundle package.
+ * This file is part of the BkstgTimelineBundle package.
  * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -51,7 +51,8 @@ abstract class GroupableSpread implements SpreadInterface
         }
     }
 
-    private function resolveClass($object) {
+    private function resolveClass($object)
+    {
         if (!$object instanceof Proxy) {
             return get_class($object);
         }

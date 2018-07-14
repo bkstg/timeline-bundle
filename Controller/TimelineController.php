@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the BkstgCoreBundle package.
+ * This file is part of the BkstgTimelineBundle package.
  * (c) Luke Bainbridge <http://www.lukebainbridge.ca/>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -79,6 +79,11 @@ class TimelineController extends Controller
 
     /**
      * Renders the current user's timeline stream.
+     *
+     * @param TokenStorageInterface    $token_storage
+     * @param TimelineManagerInterface $timeline_manager
+     * @param ActionManagerInterface   $action_manager
+     * @param Request                  $request
      */
     public function timelineAction(
         TokenStorageInterface $token_storage,
