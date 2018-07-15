@@ -25,58 +25,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class TimelineController extends Controller
 {
-    public function redirectAction(
-        int $id,
-        TokenStorageInterface $token_storage,
-        ActionManagerInterface $action_manager,
-        NotifierInterface $notifier,
-        Request $request
-    ): Response {
-        // Get the action.
-        $repo = $this->em->getRepository(Action::class);
-        if (null === $action = $repo->findOneBy(['id' => $id])) {
-            throw new NotFoundHttpException();
-        }
-
-        $user = $token_storage->getToken()->getUser();
-        $subject = $action_manager->findOrCreateComponent($user);
-        $notifier->markAsReadAction($subject, $id);
-
-        return new RedirectResponse($action->getLink());
-    }
-
-    public function markReadAction(
-        int $id,
-        TokenStorageInterface $token_storage,
-        ActionManagerInterface $action_manager,
-        NotifierInterface $notifier,
-        Request $request
-    ): Response {
-        $user = $token_storage->getToken()->getUser();
-        $subject = $action_manager->findOrCreateComponent($user);
-        $notifier->markAsReadAction($subject, $id);
-
-        return new RedirectResponse($request->server->get('HTTP_REFERER'));
-    }
-
-    public function markAllReadAction(
-        TokenStorageInterface $token_storage,
-        ActionManagerInterface $action_manager,
-        NotifierInterface $notifier,
-        Request $request
-    ): Response {
-        $user = $token_storage->getToken()->getUser();
-        $subject = $action_manager->findOrCreateComponent($user);
-        $notifier->markAllAsRead($subject);
-
-        $this->session->getFlashBag()->add(
-            'success',
-            $this->translator->trans('notifications.cleared', [], BkstgTimelineBundle::TRANSLATION_DOMAIN)
-        );
-
-        return new RedirectResponse($request->server->get('HTTP_REFERER'));
-    }
-
     /**
      * Renders the current user's timeline stream.
      *

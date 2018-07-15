@@ -25,14 +25,10 @@ services:
             - { name: sonata.block }
 
     # Notification service alias for autowiring.
-    Spy\Timeline\Notification\NotifierInterface: '@Bkstg\TimelineBundle\Notifier\UnreadNotificationManager'
     Spy\Timeline\Driver\ActionManagerInterface: '@spy_timeline.action_manager.orm'
     Spy\Timeline\Driver\TimelineManagerInterface: '@spy_timeline.timeline_manager.orm'
 
     # Event listener
-    Bkstg\TimelineBundle\EventListener\Notifications:
-        tags:
-            - { name: kernel.event_listener, event: sonata.block.event.bkstg.timeline.notifications, method: onBlock }
     Bkstg\TimelineBundle\EventListener\ProductionTimeline:
         tags:
             - { name: kernel.event_listener, event: sonata.block.event.bkstg.timeline.production_timeline, method: onBlock }
