@@ -12,15 +12,11 @@ declare(strict_types=1);
 namespace Bkstg\TimelineBundle\Controller;
 
 use Bkstg\CoreBundle\Controller\Controller;
-use Bkstg\TimelineBundle\BkstgTimelineBundle;
 use Bkstg\TimelineBundle\Entity\Action;
 use Spy\Timeline\Driver\ActionManagerInterface;
 use Spy\Timeline\Driver\TimelineManagerInterface;
-use Spy\Timeline\Notification\NotifierInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class TimelineController extends Controller
