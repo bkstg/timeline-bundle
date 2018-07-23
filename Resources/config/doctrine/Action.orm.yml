@@ -8,10 +8,6 @@ Bkstg\TimelineBundle\Entity\Action:
             id: true
             generator:
                 strategy: AUTO
-    fields:
-        link:
-            type: text
-            nullable: true
 
     oneToMany:
         actionComponents:
