@@ -4,7 +4,7 @@
 {% block subject_component %}
 {% spaceless %}
     {% set type = type|default('subject') %}
-    {% set detect_user = detect_user|default(true) %}
+    {% set detect_user = detect_user|default(false) %}
 
     {# If current user is subject alter value #}
     {% if detect_user and app.user == action.subject.data %}
@@ -25,10 +25,10 @@
 
 {% block directComplement_component %}
 {% spaceless %}
-    {% set detect_user = detect_user|default(true) %}
+    {% set detect_user = detect_user|default(false) %}
 
     {# If current user is subject alter value #}
-    {% if detect_user and app.user == action.subject.data %}
+    {% if detect_user and app.user == action.getComponent('directComplement').data %}
         {% set value = 'timeline.you'|trans %}
     {% endif %}
     {% set type = type|default('directComplement') %}
