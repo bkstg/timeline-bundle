@@ -27,6 +27,7 @@ services:
     # Notification service alias for autowiring.
     Spy\Timeline\Driver\ActionManagerInterface: '@spy_timeline.action_manager.orm'
     Spy\Timeline\Driver\TimelineManagerInterface: '@spy_timeline.timeline_manager.orm'
+    Spy\Timeline\Filter\DataHydrator: '@spy_timeline.filter.data_hydrator'
 
     # Event listener
     Bkstg\TimelineBundle\EventListener\ProductionTimeline:
