@@ -6,6 +6,7 @@ timeline:
     you: 'you'
     notifications: 'Notifications'
     goto: 'Go to timeline'
+    no_entries: 'No timeline entries.'
 notifications:
     cleared: 'Cleared all notifications.'
     empty: 'No new notifications'
