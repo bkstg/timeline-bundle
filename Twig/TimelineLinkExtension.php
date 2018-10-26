@@ -18,11 +18,21 @@ class TimelineLinkExtension extends \Twig_Extension
 {
     private $link_generator;
 
+    /**
+     * Create a new link extension.
+     *
+     * @param LinkGeneratorInterface $link_generator The link generator service.
+     */
     public function __construct(LinkGeneratorInterface $link_generator)
     {
         $this->link_generator = $link_generator;
     }
 
+    /**
+     * Return set of twig functions.
+     *
+     * @return array
+     */
     public function getFunctions()
     {
         return [
@@ -30,6 +40,13 @@ class TimelineLinkExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * Use the link generator service to generate a link.
+     *
+     * @param ActionInterface $action The action.
+     *
+     * @return ?string
+     */
     public function getLink(ActionInterface $action)
     {
         return $this->link_generator->generateLink($action);

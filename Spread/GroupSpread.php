@@ -22,6 +22,11 @@ abstract class GroupSpread implements SpreadInterface
 {
     private $membership_provider;
 
+    /**
+     * Create a new group spread.
+     *
+     * @param MembershipProviderInterface $membership_provider The membership provider service.
+     */
     public function __construct(
         MembershipProviderInterface $membership_provider
     ) {
@@ -30,6 +35,10 @@ abstract class GroupSpread implements SpreadInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param ActionInterface $action The action.
+     *
+     * @return bool
      */
     public function supports(ActionInterface $action)
     {
@@ -44,6 +53,11 @@ abstract class GroupSpread implements SpreadInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param ActionInterface $action     The action.
+     * @param EntryCollection $collection The entry collection.
+     *
+     * @return void
      */
     public function process(ActionInterface $action, EntryCollection $collection): void
     {

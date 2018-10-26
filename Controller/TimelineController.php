@@ -24,10 +24,12 @@ class TimelineController extends Controller
     /**
      * Renders the current user's timeline stream.
      *
-     * @param TokenStorageInterface    $token_storage
-     * @param TimelineManagerInterface $timeline_manager
-     * @param ActionManagerInterface   $action_manager
-     * @param Request                  $request
+     * @param TokenStorageInterface    $token_storage    The token storage service.
+     * @param TimelineManagerInterface $timeline_manager The Timeline manager service.
+     * @param ActionManagerInterface   $action_manager   The action manager service.
+     * @param Request                  $request          The incoming request.
+     *
+     * @return Response
      */
     public function timelineAction(
         TokenStorageInterface $token_storage,

@@ -20,6 +20,11 @@ abstract class AdminSpread implements SpreadInterface
 {
     /**
      * {@inheritdoc}
+     *
+     * @param ActionInterface $action     The action interface.
+     * @param EntryCollection $collection The entry collection.
+     *
+     * @return void
      */
     public function process(ActionInterface $action, EntryCollection $collection): void
     {

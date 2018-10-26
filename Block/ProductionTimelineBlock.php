@@ -28,6 +28,16 @@ class ProductionTimelineBlock extends AbstractBlockService
     private $token_storage;
     private $request_stack;
 
+    /**
+     * Create a new production timeline block.
+     *
+     * @param string                   $name             The block name.
+     * @param TwigEngine               $templating       The templating service.
+     * @param ActionManagerInterface   $action_manager   The action manager service.
+     * @param TimelineManagerInterface $timeline_manager The timeline manager service.
+     * @param TokenStorageInterface    $token_storage    The token storage service.
+     * @param RequestStack             $request_stack    The request stack service.
+     */
     public function __construct(
         $name,
         TwigEngine $templating,
@@ -43,6 +53,14 @@ class ProductionTimelineBlock extends AbstractBlockService
         parent::__construct($name, $templating);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param BlockContextInterface $context  The block context.
+     * @param Response              $response The response so far.
+     *
+     * @return void
+     */
     public function execute(BlockContextInterface $context, Response $response = null)
     {
         $request = $this->request_stack->getCurrentRequest();
@@ -65,6 +83,13 @@ class ProductionTimelineBlock extends AbstractBlockService
         ], $response);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param OptionsResolver $resolver The options resolver service.
+     *
+     * @return void`
+     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

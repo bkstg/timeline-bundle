@@ -17,6 +17,13 @@ use Sonata\BlockBundle\Model\Block;
 
 class ProductionTimeline
 {
+    /**
+     * React on block creation event.
+     *
+     * @param BlockEvent $event The block event.
+     *
+     * @return void
+     */
     public function onBlock(BlockEvent $event): void
     {
         $block = new Block();

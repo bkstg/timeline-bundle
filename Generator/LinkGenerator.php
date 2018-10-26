@@ -19,11 +19,23 @@ class LinkGenerator implements LinkGeneratorInterface
 {
     private $dispatcher;
 
+    /**
+     * Create a link generator service.
+     *
+     * @param EventDispatcherInterface $dispatcher The event dispatcher service.
+     */
     public function __construct(EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
     }
 
+    /**
+     * Generate a link for a given action by delegating to event.
+     *
+     * @param ActionInterface $action The action.
+     *
+     * @return ?string
+     */
     public function generateLink(ActionInterface $action): ?string
     {
         $event = new TimelineLinkEvent($action);

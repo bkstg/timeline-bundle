@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Bkstg\TimelineBundle\Block;
 
+use Buzz\Message\Response;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Templating\TwigEngine;
@@ -28,6 +29,16 @@ class AdminTimelineBlock extends AbstractBlockService
     private $token_storage;
     private $request_stack;
 
+    /**
+     * Create a new admin timeline block.
+     *
+     * @param string                   $name             The name of the block.
+     * @param TwigEngine               $templating       The templating service.
+     * @param ActionManagerInterface   $action_manager   The action manager service.
+     * @param TimelineManagerInterface $timeline_manager The timeline manager service.
+     * @param TokenStorageInterface    $token_storage    The token storage service.
+     * @param RequestStack             $request_stack    The request stack service.
+     */
     public function __construct(
         $name,
         TwigEngine $templating,
@@ -43,6 +54,14 @@ class AdminTimelineBlock extends AbstractBlockService
         parent::__construct($name, $templating);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param BlockContextInterface $context  The block context.
+     * @param Response              $response The response so far.
+     *
+     * @return void
+     */
     public function execute(BlockContextInterface $context, Response $response = null)
     {
         $request = $this->request_stack->getCurrentRequest();
@@ -64,6 +83,13 @@ class AdminTimelineBlock extends AbstractBlockService
         ], $response);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param OptionsResolver $resolver The options resolver service.
+     *
+     * @return void`
+     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

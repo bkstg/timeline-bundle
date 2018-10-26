@@ -24,6 +24,12 @@ abstract class GroupableSpread implements SpreadInterface
     protected $membership_provider;
     private $em;
 
+    /**
+     * Create a new groupable spread.
+     *
+     * @param MembershipProviderInterface $membership_provider The membership provider service.
+     * @param EntityManagerInterface      $em                  The entity manager service.
+     */
     public function __construct(
         MembershipProviderInterface $membership_provider,
         EntityManagerInterface $em
@@ -34,6 +40,11 @@ abstract class GroupableSpread implements SpreadInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param ActionInterface $action     The action.
+     * @param EntryCollection $collection The entry collection.
+     *
+     * @return void
      */
     public function process(ActionInterface $action, EntryCollection $collection): void
     {
@@ -51,6 +62,13 @@ abstract class GroupableSpread implements SpreadInterface
         }
     }
 
+    /**
+     * Resolve a class.
+     *
+     * @param mixed $object The object to resolve.
+     *
+     * @return string
+     */
     private function resolveClass($object)
     {
         if (!$object instanceof Proxy) {
