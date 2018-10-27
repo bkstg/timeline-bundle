@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Bkstg\TimelineBundle\Block;
 
-use Buzz\Message\Response;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Templating\TwigEngine;
